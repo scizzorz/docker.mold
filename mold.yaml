@@ -1,5 +1,7 @@
-includes:
-  - url: 'https://github.com/philipdexter/std.mold.git'
+types:
+  sh:
+    command: ["sh", "?"]
+    extensions: ["sh"]
 
 recipes:
   build:
