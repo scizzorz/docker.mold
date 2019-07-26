@@ -1,7 +1,7 @@
 includes:
-  - url: https://github.com/philipdexter/std.mold.git
+  - url: 'https://github.com/philipdexter/std.mold.git'
 
-recieps:
+recipes:
   build:
     help: "Build the image"
     type: "sh"
