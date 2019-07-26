@@ -1,0 +1,11 @@
+includes:
+  - url: https://github.com/philipdexter/std.mold.git
+
+recieps:
+  build:
+    help: "Build the image"
+    type: "sh"
+
+  push:
+    help: "Push the image"
+    type: "sh"
