@@ -1,5 +1,7 @@
-# look up credentials from CI environment unless
-# they"re already already
+# Uses $REGISTRY, $REGISTRY_USER, and $REGISTRY_PASSWORD if defined. Otherwise,
+# in CI environments, it selects $CI_REGISTRY, $CI_REGISTRY_USER, and
+# $CI_REGISTRY_PASSWORD.
+
 if [ -n $CI ]; then
   echo "Running in CI environment."
   REGISTRY=${REGISTRY:-$CI_REGISTRY}

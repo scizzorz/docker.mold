@@ -1,9 +1,16 @@
-# pull some variables from CI environment unless
-# they"re already defined
+# Uses $DOCKER_IMAGE and $DOCKER_TAG if defined. Otherwise, in
+# local environments, it selects $LOCAL_DOCKER_IMAGE AND $LOCAL_DOCKER_TAG. In
+# CI environments, it appends the user-defined $CI_IMAGE to the
+# environment-defined $CI_REGISTRY_IMAGE and selects $CI_COMMIT_REF_SLUG as the
+# tag.
+
 if [ -n $CI ]; then
   echo "Running in CI environment."
+  DOCKER_IMAGE=${DOCKER_IMAGE:-$CI_REGISTRY_IMAGE$CI_IMAGE}
   DOCKER_TAG=${DOCKER_TAG:-$CI_COMMIT_REF_SLUG}
-  DOCKER_IMAGE=${DOCKER_IMAGE:-$CI_REGISTRY_IMAGE$IMAGE}
+else
+  DOCKER_IMAGE=${DOCKER_IMAGE:-$LOCAL_DOCKER_IMAGE}
+  DOCKER_TAG=${DOCKER_TAG:-$LOCAL_DOCKER_TAG}
 fi
 
 DOCKERFILE=${DOCKERFILE:-Dockerfile}
