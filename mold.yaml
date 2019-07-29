@@ -1,13 +1,15 @@
-types:
-  sh:
-    command: ["sh", "?"]
-    extensions: ["sh"]
+includes:
+  - url: https://github.com/philipdexter/std.mold.git
 
 recipes:
+  login:
+    help: "Log in to container registry"
+    type: "sh"
+
   build:
-    help: "Build the image"
+    help: "Build container image"
     type: "sh"
 
   push:
-    help: "Push the image"
+    help: "Push container image to registry"
     type: "sh"
