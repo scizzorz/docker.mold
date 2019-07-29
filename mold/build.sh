@@ -4,7 +4,7 @@
 # environment-defined $CI_REGISTRY_IMAGE and selects $CI_COMMIT_REF_SLUG as the
 # tag.
 
-if [ -n $CI ]; then
+if [ ! -z ${CI+x} ]; then
   echo "Running in CI environment."
   DOCKER_IMAGE=${DOCKER_IMAGE:-$CI_REGISTRY_IMAGE$CI_IMAGE}
   DOCKER_TAG=${DOCKER_TAG:-$CI_COMMIT_REF_SLUG}

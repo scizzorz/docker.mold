@@ -2,7 +2,7 @@
 # in CI environments, it selects $CI_REGISTRY, $CI_REGISTRY_USER, and
 # $CI_REGISTRY_PASSWORD.
 
-if [ -n $CI ]; then
+if [ ! -z ${CI+x} ]; then
   echo "Running in CI environment."
   REGISTRY=${REGISTRY:-$CI_REGISTRY}
   REGISTRY_USER=${REGISTRY_USER:-$CI_REGISTRY_USER}

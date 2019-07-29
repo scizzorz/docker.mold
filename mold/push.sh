@@ -11,7 +11,7 @@
 
 # Parameter logic
 
-if [ -n $CI ]; then
+if [ ! -z ${CI+x} ]; then
   echo "Running in CI environment."
   DOCKER_TAG=${DOCKER_TAG:-$CI_COMMIT_REF_SLUG}
   DOCKER_IMAGE=${DOCKER_IMAGE:-$CI_REGISTRY_IMAGE$CI_IMAGE}
@@ -41,7 +41,7 @@ fi
 
 # Push logic
 
-if [ -n $CI ]; then
+if [ ! -z ${CI+x} ]; then
   docker push $FULL_IMAGE
 
 else
