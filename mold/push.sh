@@ -47,7 +47,7 @@ if [ ! -z ${CI+x} ]; then
 else
   # this finds all local git references that are pointing at HEAD
   head=$(git rev-parse HEAD)
-  refs=$(git show-ref --tags --heads -d | grep $head | awk "{print $2}" | xargs -L1 basename | sed "s/\^{}//")
+  refs=$(git show-ref --tags --heads -d | grep $head | awk '{print $2}' | xargs -L1 basename | sed "s/\^{}//")
   echo "Git refs: $refs"
 
   for ref in $refs; do
