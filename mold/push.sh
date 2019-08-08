@@ -3,9 +3,8 @@
 # git ref pointing at HEAD, it adds an additional image tag that points at a
 # registry, then pushes it.
 
-# Uses $DOCKER_IMAGE and $DOCKER_TAG if defined. Otherwise, in local
-# environments, it selects $LOCAL_DOCKER_IMAGE AND $LOCAL_DOCKER_TAG, as well
-# as $DOCKER_REGISTRY. In CI environments, it appends the user-defined
+# Uses $DOCKER_IMAGE and $DOCKER_TAG if defined. In local environments, it also
+# uses $DOCKER_REGISTRY. In CI environments, it appends the user-defined
 # $CI_IMAGE to the environment-defined $CI_REGISTRY_IMAGE and selects
 # $CI_COMMIT_REF_SLUG as the tag.
 
@@ -15,13 +14,9 @@ if [ ! -z ${CI+x} ]; then
   echo "Running in CI environment."
   DOCKER_TAG=${DOCKER_TAG:-$CI_COMMIT_REF_SLUG}
   DOCKER_IMAGE=${DOCKER_IMAGE:-$CI_REGISTRY_IMAGE$CI_IMAGE}
-  FULL_IMAGE=$DOCKER_IMAGE:$DOCKER_TAG
-
-else
-  DOCKER_TAG=${DOCKER_TAG:-$LOCAL_DOCKER_TAG}
-  DOCKER_IMAGE=${DOCKER_IMAGE:-$LOCAL_DOCKER_IMAGE}
-  FULL_IMAGE=$DOCKER_IMAGE:$DOCKER_TAG
 fi
+
+FULL_IMAGE=$DOCKER_IMAGE:$DOCKER_TAG
 
 echo "DOCKER_REGISTRY=$DOCKER_REGISTRY"
 echo "DOCKER_IMAGE=$DOCKER_IMAGE"
