@@ -1,5 +1,5 @@
 includes:
-  - url: "https://github.com/philipdexter/std.mold"
+  - url: "https://github.com/xtfc/std.mold"
 
 recipes:
   login:
