@@ -1,15 +1,18 @@
+version: "0.5"
+
 includes:
   - url: "https://github.com/xtfc/std.mold"
+    ref: "0.5"
 
 recipes:
   login:
     help: "Log in to container registry"
-    type: "sh"
+    runtime: "sh"
 
   build:
     help: "Build container image"
-    type: "sh"
+    runtime: "sh"
 
   push:
     help: "Push container image to registry"
-    type: "sh"
+    runtime: "sh"
