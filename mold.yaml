@@ -8,11 +8,36 @@ recipes:
   login:
     help: "Log in to container registry"
     runtime: "sh"
+    variables:
+      REGISTRY: "Registry URL"
+      REGISTRY_USER: "Username"
+      REGISTRY_PASSWORD: "Password"
+      CI: "Enables using CI credentials"
+      CI_REGISTRY: "(preset) Default registry if $CI is set"
+      CI_REGISTRY_USER: "(preset) Default registry if $CI is set"
+      CI_REGISTRY_PASSWORD: "(preset) Default registry if $CI is set"
 
   build:
     help: "Build container image"
     runtime: "sh"
+    variables:
+      DOCKER_ARGS: "Additional arguments to pas to docker build"
+      DOCKER_REGISTRY: "Registry URL"
+      DOCKER_IMAGE: "Image name"
+      DOCKER_TAG: "Tag label"
+      CI: "Enables using CI variables"
+      CI_COMMIT_REF_SLUG: "(preset) Default image tag if $CI is set"
+      CI_REGISTRY_IMAGE: "(preset) Default image name if $CI is set"
+      CI_IMAGE: "Suffix to append to $CI_REGISTRY_IMAGE if $CI is set"
 
   push:
     help: "Push container image to registry"
     runtime: "sh"
+    variables:
+      DOCKER_REGISTRY: "Registry URL"
+      DOCKER_IMAGE: "Image name"
+      DOCKER_TAG: "Tag label"
+      CI: "Enables using CI variables"
+      CI_COMMIT_REF_SLUG: "(preset) Default image tag if $CI is set"
+      CI_REGISTRY_IMAGE: "(preset) Default image name if $CI is set"
+      CI_IMAGE: "Suffix to append to $CI_REGISTRY_IMAGE if $CI is set"
