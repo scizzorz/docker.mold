@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Uses $DOCKER_IMAGE and $DOCKER_TAG if defined. Otherwise, in CI environments,
 # it appends the user-defined $CI_IMAGE to the environment-defined
 # $CI_REGISTRY_IMAGE and selects $CI_COMMIT_REF_SLUG as the tag.

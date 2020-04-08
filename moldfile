@@ -2,15 +2,15 @@ version "0.6"
 
 recipe login {
   help "Log in to container registry"
-  $ "sh $MOLD_SOURCE/login.sh"
+  $ "$MOLD_SOURCE/login.sh"
 }
 
 recipe build {
   help "Build container image"
-  $ "sh $MOLD_SOURCE/build.sh"
+  $ "$MOLD_SOURCE/build.sh"
 }
 
 recipe push {
   help "Push container image to registry"
-  $ "sh $MOLD_SOURCE/push.sh"
+  $ "$MOLD_SOURCE/push.sh"
 }

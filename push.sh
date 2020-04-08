@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Behaves fundamentally different in local and CI environments. In a CI
 # environment, it will push a single image. In a local environment, for each
 # git ref pointing at HEAD, it adds an additional image tag that points at a
