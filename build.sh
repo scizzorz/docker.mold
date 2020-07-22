@@ -1,9 +1,20 @@
 #!/bin/sh
 
-# FIXME this comment is out of date
-# Uses $DOCKER_IMAGE and $DOCKER_TAG if defined. Otherwise, in CI environments,
-# it appends the user-defined $CI_IMAGE to the environment-defined
-# $CI_REGISTRY_IMAGE and selects $CI_COMMIT_REF_NAME as the tag.
+# This script will build an image from $DOCKERFILE and tag it
+# $DOCKER_IMAGE:$DOCKER_TAG.
+#
+# If $ECR is defined, the ECR registry is looked up using the AWS CLI. You can
+# define the ECR repo using $ECR_IMAGE: $DOCKER_IMAGE will default to
+# $ECR_REGISTRY/$ECR_IMAGE.
+#
+# If $CI is defined, the CI registry is looked up using predefined CI
+# variables. You can define the CI image using $CI_IMAGE: $DOCKER_IMAGE will
+# default to $CI_REGISTRY_IMAGE$CI_IMAGE.
+#
+# In both cases, if $CI is defined, then $DOCKER_TAG will default to the commit
+# ref name.
+#
+# Additional arguments can be passed to docker using $DOCKER_ARGS.
 
 if [ -n "${ECR+x}" ]; then
   echo "Using ECR for default image name."

@@ -1,9 +1,14 @@
 #!/bin/sh
 
-# FIXME this comment is out of date
-# Uses $REGISTRY, $REGISTRY_USER, and $REGISTRY_PASSWORD if defined. Otherwise,
-# in CI environments, it selects $CI_REGISTRY, $CI_REGISTRY_USER, and
-# $CI_REGISTRY_PASSWORD.
+# This script will log in to a docker registry.
+#
+# If $ECR is defined, the ECR registry is looked up using the AWS CLI.
+#
+# If $CI is defined, the CI registry is looked up using predefined CI
+# variables.
+#
+# In both cases, or in local environments, the user can override these values
+# with $REGISTRY, $REGISTRY_USER, and $REGISTRY_PASSWORD.
 
 if [ -n "${ECR+x}" ]; then
   echo "Using ECR for default credentials."
