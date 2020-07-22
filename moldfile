@@ -1,4 +1,4 @@
-version "0.6"
+version "0.7"
 
 recipe login {
   help "Log in to container registry"
